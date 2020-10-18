@@ -4,4 +4,5 @@ exports.home = (req, res) => {
 
 exports.sendData = (req, res) => {
   console.log(req.body);
+  res.status(200).json({"exito": "true"})
 }
