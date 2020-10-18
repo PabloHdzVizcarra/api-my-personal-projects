@@ -1,3 +1,3 @@
 exports.home = (req, res) => {
-  res.json({"state": "correcto"})
+  res.render('index.html')
 }

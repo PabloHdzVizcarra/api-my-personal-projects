@@ -4,6 +4,7 @@ const port = process.env.PORT || 3000
 require('./modules/mongodb')
 const router = require('./router/router')
 
+app.use(express.static(__dirname + '/public'))
 app.use("/", router())
 
 app.listen(port, () => {
