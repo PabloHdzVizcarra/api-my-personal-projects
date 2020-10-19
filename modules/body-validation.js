@@ -34,7 +34,6 @@ const validate = (req, res, next) => {
   })
 }
 
-
 module.exports = {
   projectsValidationRules,
   validate

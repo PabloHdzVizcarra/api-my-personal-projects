@@ -1,6 +1,7 @@
+const config = require('./config')
 const app = require('./app')
-const port = process.env.PORT || 3000
 
-app.listen(port, () => {
-  console.log("server starting in port 3000")
+app.listen(config.PORT, config.HOST,  () => {
+  console.log(`server is on http://${config.HOST}:${config.PORT} mode ${config.NODE_ENV}`)
 })
+

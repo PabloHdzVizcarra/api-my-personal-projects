@@ -6,10 +6,13 @@ const validator = require('../modules/body-validation')
 module.exports = () => {
 
   router.get('/', handler.home)
+
   router.post('/',
     validator.projectsValidationRules(),
     validator.validate,
-    handler.sendData)
+    handler.sendData
+  )
+  
 
   return router
 }
