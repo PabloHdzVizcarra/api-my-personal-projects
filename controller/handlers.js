@@ -39,7 +39,10 @@ exports.deleteData = async (req, res) => {
     console.info('DELETE DATA')
     res.status(201).send('Delete data success')
   } catch (error) {
-    res.status(500).send(error)
+    res.status(500).json({
+      error: error,
+      message: 'No item found'
+    })
   }
 
 }
