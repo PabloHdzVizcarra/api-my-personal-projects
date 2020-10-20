@@ -14,7 +14,8 @@ module.exports = () => {
     validator.validate,
     handler.sendData
   )
-  
+
+  router.delete('/project/:id', handler.deleteData)
 
   return router
 }
