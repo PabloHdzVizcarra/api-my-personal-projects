@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
-const url = 'mongodb://localhost:27017/my-projects'
-
+const url = process.env.DATABASE
 
 mongoose.connect(url, {
   useUnifiedTopology: true,
@@ -9,9 +8,6 @@ mongoose.connect(url, {
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error'))
-
-
-
 
 module.exports = {
   db

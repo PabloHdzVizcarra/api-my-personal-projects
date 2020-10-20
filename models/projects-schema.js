@@ -11,7 +11,6 @@ const projectsSchema = new mongoose.Schema({
 
 const Project = mongoose.model('Projects', projectsSchema)
 
-
 module.exports = {
   Project
 }
