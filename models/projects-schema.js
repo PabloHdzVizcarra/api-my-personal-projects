@@ -9,7 +9,7 @@ const projectsSchema = new mongoose.Schema({
   technologies: String
 })
 
-const Project = mongoose.model('Projects', projectsSchema)
+const Project = mongoose.model('projects', projectsSchema)
 
 module.exports = {
   Project

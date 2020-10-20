@@ -1,28 +1,37 @@
-const request = require("supertest")
+const request = require('supertest');
 const app = require('../../app')
-const mongoose =  require('../../models/projects-schema')
+require('dotenv').config();
 
-describe('call route "/"', () => {
-  
-  const project = jest.spyOn(mongoose, 'Project').mockReturnValue({
-    name: "success"
-  })
+describe('POST "/"', () => {
 
   const data = {
-    name: "Search Dog App",
-    img: 'www.cloudinary.com',
+    name: 'Search Dog App',
+    description: "App para buscar perros",
+    urlGitHub: "www.github.com",
     urlDemo: 'www.netlify.com',
-    urlGitHub: 'www.github.com',
-    description: 'una aplicacion sencilla donde puedes buscar perros por su tipo de raza',
-    technologies: 'React JS' 
+    img: 'www.cloudinary.com',
+    technologies: 'react js'
   }
 
-  test('POST "/" ', async() => {
-    const response = await request(app).post("/").send(data)
+  test('should save data correctly', async () => {
+    const res = await request(app).post('/').send(data)
+    console.log(res.text);
+    console.log(res.type);
+    expect(res.status).toBe(201)
+    expect(res.type).toBe('text/html')
+  })
 
-    console.log(response.text);
-    console.log(response.status);
+  test('if wrong data is sent, the database should ', async () => {
+    const wrongData = {
+      name: 'Search Dog App',
+      description: "App para buscar perros",
+      img: 'www.cloudinary',
+      technologies: 'react js'
+    }
+    const res = await request(app).post('/').send(wrongData)
+    expect(res.type).toBe('application/json');
+    console.log(JSON.parse(res.text).errors);
+
   })
   
 })
-

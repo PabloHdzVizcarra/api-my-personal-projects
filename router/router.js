@@ -7,6 +7,7 @@ module.exports = () => {
 
   router.get('/', handler.home)
 
+
   router.get('/projects', handler.getAllData)
 
   router.post('/',

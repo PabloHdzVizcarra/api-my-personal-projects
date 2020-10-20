@@ -6,7 +6,6 @@ dotenv.config({
   path: path.resolve(__dirname, process.env.NODE_ENV + '.env')
 })
 
-console.log(process.env.NODE_ENV + '.env');
 
 module.exports = {
   NODE_ENV: process.env.NODE_ENV || 'development',

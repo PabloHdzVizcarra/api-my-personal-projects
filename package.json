@@ -7,7 +7,8 @@
     "start": "node index.js",
     "dev": "NODE_ENV=development nodemon index.js",
     "produc": "NODE_ENV=production nodemon index.js",
-    "test": "NODE_ENV=test jest"
+    "dev:test": "NODE_ENV=test nodemon index.js",
+    "test": "jest --watch"
   },
   "author": "Pablo Hernandez Vizcarra",
   "license": "MIT",
