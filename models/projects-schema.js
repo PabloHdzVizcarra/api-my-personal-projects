@@ -6,7 +6,7 @@ const projectsSchema = new mongoose.Schema({
   urlGitHub: String,
   urlDemo: String,
   description: String,
-  technologies: String
+  technologies: Array
 })
 
 const Project = mongoose.model('projects', projectsSchema)

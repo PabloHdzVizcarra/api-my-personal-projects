@@ -1,11 +1,15 @@
-const { Project } = require("../models/projects-schema")
+const { Project } = require("../models/projects-schema");
+const { convertStringToArray } = require("../modules/convertStringToArray");
+const {modifyDataBeforeSaving} = require("../modules/modifyDataBeforeSaving");
 
 exports.home = (req, res) => {
   res.render('index.html')
 }
 
 exports.sendData = async (req, res) => {
-  const project = new Project(req.body)
+  const dataArray = convertStringToArray(req.body.technologies, ",")
+  const data = modifyDataBeforeSaving(req.body, dataArray)
+  const project = new Project(data)
   await project.save()
   console.info('DATA SAVE SUCCESSFULLY')
 
