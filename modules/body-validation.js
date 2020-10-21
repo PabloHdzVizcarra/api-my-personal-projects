@@ -26,7 +26,7 @@ const validate = (req, res, next) => {
     extractedErrors.push({[err.param]: err.msg})  
   )
 
-  console.error('Error succes send data')
+  console.log('Error succes send data')
   
   return res.status(422).json({
     error: true,
