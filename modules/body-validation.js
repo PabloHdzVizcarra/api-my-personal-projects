@@ -30,7 +30,9 @@ const validate = (req, res, next) => {
   )
 
   console.error('Error succes send data')
+  
   return res.status(422).json({
+    error: true,
     errors: extractedErrors
   })
 }

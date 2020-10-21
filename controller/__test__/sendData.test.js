@@ -15,23 +15,104 @@ describe('POST "/"', () => {
 
   test('should save data correctly', async () => {
     const res = await request(app).post('/').send(data)
-    console.log(res.text);
-    console.log(res.type);
     expect(res.status).toBe(201)
     expect(res.type).toBe('text/html')
   })
 
-  test('if wrong data is sent, the database should ', async () => {
+  test('if the data sent does not include the name property it should return an error', async () => {
+    const wrongData = {
+      description: "App para buscar perros",
+      urlGitHub: "www.github.com",
+      urlDemo: 'www.netlify.com',
+      img: 'www.cloudinary.com',
+      technologies: 'react js'
+    }
+    const response =
+      await request(app).post('/').send(wrongData)
+    
+    expect(response.type).toBe('application/json')
+    expect(response.status).toBe(422)
+    expect(JSON.parse(response.text).error).toBe(true)
+  })
+
+  test('if the data sent does not include the description property it should return an error', async () => {
+    const wrongData = {
+      name: 'Search Dog App',
+      urlGitHub: "www.github.com",
+      urlDemo: 'www.netlify.com',
+      img: 'www.cloudinary.com',
+      technologies: 'react js'
+    }
+    const response =
+      await request(app).post('/').send(wrongData)
+    
+    expect(response.type).toBe('application/json')
+    expect(response.status).toBe(422)
+    expect(JSON.parse(response.text).error).toBe(true)
+  })
+
+  test('if the data sent does not include the urlGitHub property it should return an error', async () => {
     const wrongData = {
       name: 'Search Dog App',
       description: "App para buscar perros",
-      img: 'www.cloudinary',
+      urlDemo: 'www.netlify.com',
+      img: 'www.cloudinary.com',
       technologies: 'react js'
     }
-    const res = await request(app).post('/').send(wrongData)
-    expect(res.type).toBe('application/json');
-    console.log(JSON.parse(res.text).errors);
+    const response =
+      await request(app).post('/').send(wrongData)
+    
+    expect(response.type).toBe('application/json')
+    expect(response.status).toBe(422)
+    expect(JSON.parse(response.text).error).toBe(true)
+  })
 
+  test('if the data sent does not include the urlDemo property it should return an error', async () => {
+    const wrongData = {
+      name: 'Search Dog App',
+      description: "App para buscar perros",
+      urlGitHub: "www.github.com",
+      img: 'www.cloudinary.com',
+      technologies: 'react js'
+    }
+    const response =
+      await request(app).post('/').send(wrongData)
+    
+    expect(response.type).toBe('application/json')
+    expect(response.status).toBe(422)
+    expect(JSON.parse(response.text).error).toBe(true)
+  })
+
+  test('if the data sent does not include the img property it should return an error', async () => {
+    const wrongData = {
+      name: 'Search Dog App',
+      description: "App para buscar perros",
+      urlGitHub: "www.github.com",
+      urlDemo: 'www.netlify.com',
+      technologies: 'react js'
+    }
+    const response =
+      await request(app).post('/').send(wrongData)
+    
+    expect(response.type).toBe('application/json')
+    expect(response.status).toBe(422)
+    expect(JSON.parse(response.text).error).toBe(true)
+  })
+
+  test('if the data sent does not include the technologies property it should return an error', async () => {
+    const wrongData = {
+      name: 'Search Dog App',
+      description: "App para buscar perros",
+      urlGitHub: "www.github.com",
+      urlDemo: 'www.netlify.com',
+      img: 'www.cloudinary.com',
+    }
+    const response =
+      await request(app).post('/').send(wrongData)
+    
+    expect(response.type).toBe('application/json')
+    expect(response.status).toBe(422)
+    expect(JSON.parse(response.text).error).toBe(true)
   })
   
 })

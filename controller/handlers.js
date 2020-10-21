@@ -1,7 +1,6 @@
 const { Project } = require("../models/projects-schema")
 
 exports.home = (req, res) => {
-  console.log('Success')
   res.render('index.html')
 }
 
@@ -19,7 +18,6 @@ exports.getAllData = async (req, res) => {
     console.log('Get data successfull')
     
     if (err) {
-      console.error(err)
       return res.status(500).json({
         error: 'database error'
       })
