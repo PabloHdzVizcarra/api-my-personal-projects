@@ -1,5 +1,5 @@
-const modifyDataBeforeSaving = (data, dataToReplace) => {
-  data.technologies = dataToReplace
+const modifyDataBeforeSaving = (data, field, dataToReplace) => {
+  data[field] = dataToReplace
   return {...data}
 }
 

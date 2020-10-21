@@ -1,7 +1,6 @@
 const convertStringToArray = (string, separator) => {
   const data = string.split(separator)
-
-  return data
+  return data.map(elem => elem.trim())
 }
 
 

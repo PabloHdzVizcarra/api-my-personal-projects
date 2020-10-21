@@ -7,8 +7,11 @@ exports.home = (req, res) => {
 }
 
 exports.sendData = async (req, res) => {
-  const dataArray = convertStringToArray(req.body.technologies, ",")
-  const data = modifyDataBeforeSaving(req.body, dataArray)
+  const data = modifyDataBeforeSaving(
+    req.body,
+    convertStringToArray(req.body.technologies, ",")
+  )
+
   const project = new Project(data)
   await project.save()
   console.info('DATA SAVE SUCCESSFULLY')
