@@ -3,7 +3,7 @@
 </h1>
 
 <p>
-  A simple api with 3 endpoints
+  A simple api with 4 endpoints
 </p>
 
 <br/>
@@ -35,6 +35,7 @@ npm run test
 GET /
 POST /
 GET /projects
+DELETE /project/:id
 ```
 
 
