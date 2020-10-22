@@ -17,6 +17,7 @@ exports.sendData = async (req, res) => {
   console.info('DATA SAVE SUCCESSFULLY')
 
   res.status(201).send('Data save successfully')
+
 }
 
 exports.getAllData = async (req, res) => {
@@ -30,7 +31,8 @@ exports.getAllData = async (req, res) => {
       })
     }
     
-    res.json(data)
+    console.log(data)
+    res.json({data: data})
   })
 
 }
